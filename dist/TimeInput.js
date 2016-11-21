@@ -35,21 +35,17 @@ var TimeInput = React.createClass({
     if (this.props.className) {
       className += ' ' + this.props.className;
     }
-    return React.createElement(
-      'div',
-      { className: className },
-      React.createElement('input', {
-        className: 'TimeInput-input',
-        ref: function ref(input) {
-          _this.input = input;
-        },
-        type: 'text',
-        value: this.format(this.props.value),
-        onChange: this.handleChange,
-        onBlur: this.handleBlur,
-        onKeyDown: this.handleKeyDown
-      })
-    );
+    return React.createElement('input', {
+      className: className,
+      ref: function ref(input) {
+        _this.input = input;
+      },
+      type: 'text',
+      value: this.format(this.props.value),
+      onChange: this.handleChange,
+      onBlur: this.handleBlur,
+      onKeyDown: this.handleKeyDown
+    });
   },
   format: function format(val) {
     if (isTwelveHourTime(val)) val = val.replace(/^00/, '12');
