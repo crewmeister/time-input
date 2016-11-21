@@ -93,6 +93,13 @@ var TimeInput = React.createClass({
     value = adder(value, getGroupId(start), amount)
     this.onChange(value, start)
   },
+  handleHorizontalArrows(event) {
+    event.preventDefault()
+    var start = caret.start(this.input)
+    var amount = event.which === 39 ? 1 : -1
+    caret.set(this.input, start + amount)
+    this.setState({ caretIndex: start + amount })
+  },
   handleBackspace (event) {
     event.preventDefault()
     var defaultValue = this.props.defaultValue
@@ -136,11 +143,14 @@ var TimeInput = React.createClass({
     this.onChange(value, start)
   },
   handleKeyDown (event) {
+
     if (event.which === 9) return this.handleTab(event)
     if (event.which === 38 || event.which === 40) return this.handleArrows(event)
+    if (event.which === 37 || event.which === 39) return this.handleHorizontalArrows(event)
     if (event.which === 8) return this.handleBackspace(event)
     if (event.which === 46) return this.handleForwardspace(event)
     if (event.which === 27) return this.handleEscape(event)
+
   },
   isSeparator (char) {
     return /[:\s]/.test(char)
