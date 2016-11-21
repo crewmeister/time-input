@@ -55,11 +55,6 @@
   "directories": {
     "test": "test"
   },
-  "standard": {
-    "ignore": [
-      "/dist/*"
-    ]
-  },
   "keywords": [
     "field",
     "form",
