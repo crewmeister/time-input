@@ -44,4 +44,4 @@ npm test
 
 ## demo
 
-[link](https://time-input-ciikzxburn.now.sh)
+[link](https://time-input-xotbcfeaww.now.sh/)
