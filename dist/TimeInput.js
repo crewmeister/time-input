@@ -27,6 +27,7 @@ var TimeInput = CreateReactClass({
     value: PropTypes.string,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
     defaultValue: PropTypes.string
   },
   render: function render() {
@@ -45,6 +46,7 @@ var TimeInput = CreateReactClass({
       value: this.format(this.props.value),
       onChange: this.handleChange,
       onBlur: this.handleBlur,
+      onFocus: this.handleFocus,
       onKeyDown: this.handleKeyDown
     });
   },
@@ -65,6 +67,9 @@ var TimeInput = CreateReactClass({
   handleBlur: function handleBlur() {
     if (this.mounted) this.setState({ caretIndex: null });
     if (this.props.onBlur) this.props.onBlur(this.input.value);
+  },
+  handleFocus: function handleFocus() {
+    if (this.props.onFocus) this.props.onFocus(this.input.value);
   },
   handleEscape: function handleEscape() {
     if (this.mounted) this.input.blur();
